@@ -1,0 +1,109 @@
+.block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .block {
+    width: 704px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .block {
+    width: 1034px;
+  }
+}
+
+.nav {
+  margin-bottom: 16px;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+.btnPrevPage {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  background-image: url('../../assets/images/svg/array_back.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mainPage {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .mainPage {
+    display: block;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+
+    color: var(--text-with-opacity);
+    margin-left: 15px;
+  }
+}
+
+.reportsSection {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+@media screen and (min-width: 768px) {
+  .reportsSection {
+    flex-direction: row;
+  }
+}
+
+.blockMonth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .blockMonth {
+    margin-bottom: 0px;
+    margin-left: 102px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .blockMonth {
+    margin-left: 214px;
+  }
+}
+
+.currentPeriod {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+
+  color: var(--text-with-opacity);
+
+  text-align: center;
+  margin-bottom: 5px;
+}
