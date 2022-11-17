@@ -3,6 +3,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurUser } from 'redux/auth/authOperations';
 import { getMustCurUser } from 'redux/auth/AuthSelector';
+import { useTheme } from '../hooks/useTheme';
+import { ThemeContext } from '../hooks/useThemeContext';
 import SharedLayout from './SharedLayout/SharedLayout ';
 import PrivateRoute from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
@@ -16,6 +18,7 @@ const ExpensesComponent = lazy(() =>
 const IncomeComponent = lazy(() => import('./IncomeComponent/IncomeComponent'));
 
 export const App = () => {
+  const { theme, setTheme } = useTheme();
   const dispatch = useDispatch();
   const mustCurUser = useSelector(getMustCurUser);
 
@@ -25,32 +28,34 @@ export const App = () => {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route
-            index
-            element={<PublicRoute restricted component={MainPage} />}
-          />
-          <Route
-            path="transactions"
-            element={<PrivateRoute component={HomePage} />}
-          >
+      <ThemeContext.Provider value={{ theme, setTheme }}>
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
             <Route
-              path="expenses"
-              element={<PrivateRoute component={ExpensesComponent} />}
+              index
+              element={<PublicRoute restricted component={MainPage} />}
             />
             <Route
-              path="income"
-              element={<PrivateRoute component={IncomeComponent} />}
+              path="transactions"
+              element={<PrivateRoute component={HomePage} />}
+            >
+              <Route
+                path="expenses"
+                element={<PrivateRoute component={ExpensesComponent} />}
+              />
+              <Route
+                path="income"
+                element={<PrivateRoute component={IncomeComponent} />}
+              />
+            </Route>
+            <Route
+              path="reports"
+              element={<PrivateRoute component={ReportsPage} />}
             />
           </Route>
-          <Route
-            path="reports"
-            element={<PrivateRoute component={ReportsPage} />}
-          />
-        </Route>
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </ThemeContext.Provider>
     </>
   );
 };

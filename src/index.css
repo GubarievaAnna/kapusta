@@ -76,6 +76,7 @@ body {
   background: var(--white-color);
   scrollbar-color: #458245; /* «цвет ползунка» «цвет полосы скроллбара» */
   scrollbar-width: 5px;
+  padding-bottom: 20px;
 }
 
 code {

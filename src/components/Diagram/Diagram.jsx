@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,12 +8,14 @@ import {
   Tooltip,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { useMediaQuery } from 'react-responsive';
+import { useThemeContext } from '../../hooks/useThemeContext';
 import s from './Diagram.module.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip);
 
 const Diagram = ({ keysDiagram, valuesDiagram, category }) => {
+  const { theme } = useThemeContext();
+
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isTabletMin = useMediaQuery({ query: '(min-width: 768px)' });
   const isTabletMax = useMediaQuery({ query: '(max-width: 1280px)' });
@@ -56,7 +59,7 @@ const Diagram = ({ keysDiagram, valuesDiagram, category }) => {
         },
         ticks: {
           padding: 5,
-          color: '#52555f',
+          color: theme === 'day' ? '#52555f' : '#F5F6FB',
           font: {
             weight: 400,
             size: 12,
@@ -72,7 +75,7 @@ const Diagram = ({ keysDiagram, valuesDiagram, category }) => {
         },
         ticks: {
           padding: 5,
-          color: '#52555f',
+          color: theme === 'day' ? '#52555f' : '#F5F6FB',
           font: {
             weight: 400,
             size: 10,

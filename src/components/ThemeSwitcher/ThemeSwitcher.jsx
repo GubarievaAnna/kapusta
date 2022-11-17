@@ -1,8 +1,8 @@
-import { useTheme } from '../../hooks/useTheme';
+import { useThemeContext } from '../../hooks/useThemeContext';
 import s from './ThemeSwitcher.module.css';
 
 export default function ThemeSwitcher() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useThemeContext();
 
   const handleChange = () => {
     if (theme === 'day') {
@@ -14,7 +14,11 @@ export default function ThemeSwitcher() {
 
   return (
     <div className={s.toggleBtn}>
-      <input type="checkbox" checked={theme === 'night'} onChange={handleChange} />
+      <input
+        type="checkbox"
+        checked={theme === 'night'}
+        onChange={handleChange}
+      />
       <span>&nbsp;</span>
     </div>
   );

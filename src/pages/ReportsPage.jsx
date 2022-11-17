@@ -53,7 +53,11 @@ const ReportsPage = () => {
 
   return (
     <>
-      <ReportsHeader setMonth={setMonth} month={month} setCategory={setCategory} />
+      <ReportsHeader
+        setMonth={setMonth}
+        month={month}
+        setCategory={setCategory}
+      />
       {userExpenses && userIncome && error === '' && (
         <>
           <ReportsTotal userExpenses={userExpenses} userIncome={userIncome} />
@@ -72,7 +76,9 @@ const ReportsPage = () => {
         <Diagram
           keysDiagram={keysDiagram}
           valuesDiagram={valuesDiagram}
-          category={type === 'expenses' ? expensesCategories[category].title : category}
+          category={
+            type === 'expenses' ? expensesCategories[category].title : category
+          }
         />
       )}
       {loading && <Loader />}
