@@ -17,7 +17,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: 'red';
+  background-color: var(--scrollbar-color);
 }
 
 html[data-theme='day'] {
